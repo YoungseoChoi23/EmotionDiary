@@ -73,7 +73,7 @@ const dummyData = [
 ];
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, dummyData);
+  const [data, dispatch] = useReducer(reducer, []);
 
   const dataId = useRef(0);
   //CREATE; 새로운 일기 아이템을 객체로 받아서 data라는 이름으로 전달함
@@ -82,7 +82,7 @@ function App() {
       type: 'CREATE',
       data: {
         id: dataId.current,
-        date: new Date(date).getData(),
+        date: new Date(date).getTime(),
         content,
         emotion,
       },

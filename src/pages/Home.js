@@ -25,7 +25,10 @@ const Home = () => {
       const lastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0
+        0,
+        23,
+        59,
+        59
       ).getTime();
       // 현재 월의 가장 마지막 날짜를 시간으로 가짐
 
@@ -35,6 +38,11 @@ const Home = () => {
     }
   }, [diaryList, curDate]);
   //diaryList가 바뀌었을 때 (수정, 추가, 삭제) 날짜에 따라 다시 필터링해야 하므로 diaryList도 dependency array에 추가해야 한다.
+
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName('title')[0];
+    titleElement.innerHTML = `감정 일기장`;
+  }, []);
 
   useEffect(() => {
     console.log(data);
